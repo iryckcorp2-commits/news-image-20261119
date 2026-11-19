@@ -50,6 +50,22 @@ sha256sum /tmp/mf-run1/entry.png /tmp/mf-run2/entry.png
 Final entry.png sha256:
 `4ad2432c669ecf808042cce888738256e9d21457c875e54a88c364bf71a63c45`
 
+## makefun CLI pre-submit check (run 19 Nov 2026 ~19:55 WIB)
+
+```
+node cli/makefun.mjs check --kit . --repo ../repo --worktree
+```
+
+- PASS competition_open, snapshot, license_osi, entrypoint (4 passed)
+- FAIL transcripts_present — no transcripts were supplied with the
+  check; the bundle is produced at submit time from the build sessions
+- 5 checks deferred to submission: repo_public, repo_owner,
+  repo_created_after_open, commit_in_repo, duplicate_snapshot
+- First run also caught a real defect: LICENSE lacked the
+  `SPDX-License-Identifier: MIT` line (license_osi FAIL). Fixed and
+  re-committed; second run passes it.
+- Local HEAD after fixes: `b0a48c1` (2 commits: entry + LICENSE fix)
+
 ## GitHub / submit status
 
 - `gh auth status`: "You are not logged into any GitHub hosts."
